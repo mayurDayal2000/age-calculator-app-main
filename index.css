@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light-grey: #f0f0f0;
+  --grey: #716f6f;
+  --black: #151515;
+  --purple: #854dff;
+  --line: #dcdcdc;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--light-grey);
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+main {
+  padding: 3rem 1.5rem;
+  background-color: white;
+  border-radius: 1.5rem;
+  border-bottom-right-radius: 6.25rem;
+  width: 100%;
+  max-width: 520px;
+}
+
+.data-inputs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--grey);
+  display: block;
+  margin-bottom: 0.125rem;
+}
+
+.input-group input {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #dcdcdc;
+  outline: none;
+  appearance: textfield;
+  width: 100%;
+  max-width: 10rem;
+
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--black);
+  caret-color: var(--purple);
+}
+
+.input-group input:focus {
+  border-color: var(--purple);
+}
+
+.submit-group {
+  margin: 2rem 0;
+  position: relative;
+}
+
+.submit-group::before,
+.submit-group::after {
+  position: absolute;
+  content: "";
+  width: 50%;
+  height: 2px;
+  background-color: var(--line);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.submit-group::after {
+  right: 0;
+}
+
+.submit-btn {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--purple);
+  padding: 1.125rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: background ease-in 350ms;
+}
+
+.submit-btn:hover {
+  background-color: var(--black);
+}
+
+.submit-btn img {
+  width: 100%;
+}
+
+.age-results li {
+  font-weight: 800;
+  font-style: italic;
+  font-size: 3.5rem;
+  color: var(--black);
+  list-style: none;
+}
+
+.age-results li span {
+  color: var(--purple);
+}
+
+@media screen and (min-width: 640px) {
+  body {
+    padding: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  main {
+    max-width: 840px;
+    padding: 3.5rem;
+  }
+
+  .data-inputs {
+    gap: 2rem;
+  }
+
+  .input-group label {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .input-group input {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .submit-group {
+    margin: 0;
+  }
+
+  .submit-btn {
+    margin: 0 0 0 auto;
+    width: 6rem;
+    height: 6rem;
+    padding: 1.625rem;
+  }
+}
