@@ -10,6 +10,7 @@
   --black: #151515;
   --purple: #854dff;
   --line: #dcdcdc;
+  --red: #ff5959;
 }
 
 body {
@@ -55,6 +56,7 @@ main {
   border: 1px solid #dcdcdc;
   outline: none;
   appearance: textfield;
+  display: block;
   width: 100%;
   max-width: 10rem;
 
@@ -66,6 +68,15 @@ main {
 
 .input-group input:focus {
   border-color: var(--purple);
+}
+
+.input-group span {
+  font-size: 0.875rem;
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+  min-height: 1.25rem;
+  color: var(--red);
 }
 
 .submit-group {
@@ -122,6 +133,14 @@ main {
 
 .age-results li span {
   color: var(--purple);
+}
+
+.error-input label {
+  color: var(--red);
+}
+
+.error-input input {
+  border-color: var(--red);
 }
 
 @media screen and (min-width: 640px) {
