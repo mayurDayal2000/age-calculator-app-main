@@ -18,35 +18,34 @@
 
 <body>
   <main>
-    <section class="age-calculator">
-      <form action="" method="get">
-        <div class="data-inputs">
-          <div class="input-group">
-            <label for="day">Day</label>
-            <input type="number" name="day" id="day" placeholder="DD" />
-            <span></span>
-          </div>
-
-          <div class="input-group">
-            <label for="month">Month</label>
-            <input type="number" name="month" id="month" placeholder="MM" />
-            <span></span>
-          </div>
-
-          <div class="input-group">
-            <label for="year">Year</label>
-            <input type="number" name="year" id="year" placeholder="YY" />
-            <span></span>
-          </div>
+    <form method="get">
+      <div class="data-inputs">
+        <div class="input-group">
+          <label for="day">Day</label>
+          <input type="number" name="day" id="day" placeholder="DD" />
+          <span></span>
         </div>
 
-        <div class="submit-group">
-          <button class="submit-btn" type="submit">
-            <img src="./public/icon-arrow.svg" alt="submit" />
-          </button>
+        <div class="input-group">
+          <label for="month">Month</label>
+          <input type="number" name="month" id="month" placeholder="MM" />
+          <span></span>
         </div>
-      </form>
-    </section>
+
+        <div class="input-group">
+          <label for="year">Year</label>
+          <input type="number" name="year" id="year" placeholder="YY" />
+          <span></span>
+        </div>
+      </div>
+
+      <div class="submit-group">
+        <button class="submit-btn" type="submit">
+          <img src="./public/icon-arrow.svg" alt="submit" />
+        </button>
+      </div>
+    </form>
+
 
     <ul class="age-results">
       <li><span>--</span> years</li>
@@ -54,6 +53,11 @@
       <li><span>--</span> days</li>
     </ul>
   </main>
+
+  <footer>
+    <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <strong>Mayur Dayal</strong>.</p>
+  </footer>
 </body>
 
 </html>

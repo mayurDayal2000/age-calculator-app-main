@@ -12,33 +12,31 @@ inputs.forEach((input) =>
 function validateInputs(day, month, year) {
   const today = new Date();
 
-  if (!day.value || day.value < 0 || day.value > 31) {
-    day.parentElement.classList.add("error-input");
-    day.nextElementSibling.textContent = !day.value ? "This field is required" : "Must be a valid day";
-  } else {
-    day.parentElement.classList.remove("error-input");
-    day.nextElementSibling.textContent = "";
-  }
+  const daysCount = [31, isLeapYear(year.value) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-  if (!month.value || month.value < 0 || month.value > 12) {
-    month.parentElement.classList.add("error-input");
-    month.nextElementSibling.textContent = !day.value ? "This field is required" : "Must be a valid month";
-  } else {
-    month.parentElement.classList.remove("error-input");
-    month.nextElementSibling.textContent = "";
-  }
+  const validateInput = (input, max, errorMsg) => {
+    if (!input.value || input.value < 0 || input.value > max) {
+      input.parentElement.classList.add("error-input");
+      input.nextElementSibling.textContent = errorMsg;
+    } else {
+      input.parentElement.classList.remove("error-input");
+      input.nextElementSibling.textContent = "";
+    }
+  };
 
-  if (!year.value || year.value < 0 || year.value > today.getFullYear()) {
-    year.parentElement.classList.add("error-input");
-    year.nextElementSibling.textContent = !day.value ? "This field is required" : year.value > today.getFullYear() ? "Must be in the past" : "Must be a valid year";
-  } else {
-    year.parentElement.classList.remove("error-input");
-    year.nextElementSibling.textContent = "";
-  }
+  validateInput(day, daysCount[month.value - 1], !day.value ? "This field is required" : "Must be a valid day");
+  validateInput(month, 12, !day.value ? "This field is required" : "Must be a valid month");
+  validateInput(year, today.getFullYear(), !day.value ? "This field is required" : year.value > today.getFullYear() ? "Must be in the past" : "Must be a valid year");
+}
+
+function isLeapYear(year) {
+  return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
 }
 
 function calculateAge(day, month, year) {
-  const dayValidate = day.value && day.value > 0 && day.value <= 31;
+  const daysCount = [31, isLeapYear(year.value) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  const dayValidate = day.value && day.value > 0 && day.value <= daysCount[month.value - 1];
   const monthValidate = month.value && month.value > 0 && month.value <= 12;
   const yearValidate = year.value && year.value > 0 && year.value <= new Date().getFullYear();
 
@@ -73,9 +71,11 @@ form.addEventListener("submit", (event) => {
 
   const age = calculateAge(day, month, year);
 
-  results.forEach((result, index) => {
-    result.textContent = age[index];
-  });
+  if (age) {
+    results.forEach((result, index) => {
+      result.textContent = age[index];
+    });
+  }
 });
 
 form.reset();
